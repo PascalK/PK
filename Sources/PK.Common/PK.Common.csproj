@@ -47,6 +47,7 @@
     <None Include="..\..\PK.snk">
       <Link>Properties\PK.snk</Link>
     </None>
+    <None Include="PK.Common.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
