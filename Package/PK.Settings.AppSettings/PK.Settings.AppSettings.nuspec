@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>PK.Settings.Configuration</id>
+    <id>PK.Settings.AppSettings</id>
     <version>0.5.1</version>
-    <title>PK Settings Configuration</title>
+    <title>PK Settings AppSettings</title>
     <authors>Pascal Klarenbeek</authors>
     <owners>Pascal Klarenbeek</owners>
     <summary>
@@ -16,16 +16,16 @@
     <copyright>Copyright Pascal Klarenbeek 2013-2014</copyright>
     <tags>PK Settings configuration settingloader web.config app.config AppSettings</tags>
     <references>
-      <reference file="PK.Settings.Configuration.dll" />
+      <reference file="PK.Settings.AppSettings.dll" />
     </references>
     <dependencies>
       <dependency id="PK.Settings" version="0.5.1" />
     </dependencies>
   </metadata>
   <files>
-    <file src="lib\portable-net4+sl5+wp8+win8\PK.Settings.Configuration.dll" target="lib\portable-net4+sl5+wp8+win8" />
-    <file src="lib\portable-net4+sl5+wp8+win8\PK.Settings.Configuration.pdb" target="lib\portable-net4+sl5+wp8+win8" />
-    <file src="lib\portable-net4+sl5+wp8+win8\PK.Settings.Configuration.xml" target="lib\portable-net4+sl5+wp8+win8" />
+    <file src="lib\portable-net4+sl5+wp8+win8\PK.Settings.AppSettings.dll" target="lib\portable-net4+sl5+wp8+win8" />
+    <file src="lib\portable-net4+sl5+wp8+win8\PK.Settings.AppSettings.pdb" target="lib\portable-net4+sl5+wp8+win8" />
+    <file src="lib\portable-net4+sl5+wp8+win8\PK.Settings.AppSettings.xml" target="lib\portable-net4+sl5+wp8+win8" />
     <file src="lib\portable-net4+sl5+wp8+win8\CodeContracts\*" target="lib\portable-net4+sl5+wp8+win8\CodeContracts" />
   </files>
 </package>
