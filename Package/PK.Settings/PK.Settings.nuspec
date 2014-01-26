@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>PK.Settings</id>
+    <version>0.5.1</version>
+    <title>PK Settings</title>
+    <authors>Pascal Klarenbeek</authors>
+    <owners>Pascal Klarenbeek</owners>
+    <summary>
+    </summary>
+    <description>Common logic for a generic way of accessing settings regardless of the platform and settings source that is being used</description>
+    <projectUrl>https://github.com/PascalK/PK</projectUrl>
+    <licenseUrl>https://github.com/PascalK/PK/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <releaseNotes>Initial package containing a generic way of accessing settings in an application regardless of the target platform and settings source that is being used</releaseNotes>
+    <copyright>Copyright Pascal Klarenbeek 2013-2014</copyright>
+    <tags>PK Settings ISetting generic settings pattern settingloader setting types</tags>
+    <references>
+      <reference file="PK.Settings.dll" />
+    </references>
+    <dependencies>
+      <dependency id="PK.Common" version="0.5.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="lib\portable-net4+sl5+wp8+win8\PK.Settings.dll" target="lib\portable-net4+sl5+wp8+win8" />
+    <file src="lib\portable-net4+sl5+wp8+win8\PK.Settings.pdb" target="lib\portable-net4+sl5+wp8+win8" />
+    <file src="lib\portable-net4+sl5+wp8+win8\PK.Settings.xml" target="lib\portable-net4+sl5+wp8+win8" />
+    <file src="lib\portable-net4+sl5+wp8+win8\CodeContracts\*" target="lib\portable-net4+sl5+wp8+win8\CodeContracts" />
+  </files>
+</package>

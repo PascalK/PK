@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PK.Common")]
-[assembly: AssemblyDescription("Common reusable classes")]
+[assembly: AssemblyTitle("PK.Settings")]
+[assembly: AssemblyDescription("Common settings logic settings source independent")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Pascal Klarenbeek")]
-[assembly: AssemblyProduct("PK.Common")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyProduct("PK.Settings")]
+[assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]

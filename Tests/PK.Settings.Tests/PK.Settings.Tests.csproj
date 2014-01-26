@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2BA92D64-6A7A-4BA0-ADA6-ACAE32AA80DD}</ProjectGuid>
+    <ProjectGuid>{FAE89E6B-F134-41F5-AB52-0544DB8286F7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PK.Common</RootNamespace>
-    <AssemblyName>PK.Common.Tests</AssemblyName>
+    <RootNamespace>PK.Settings</RootNamespace>
+    <AssemblyName>PK.Settings.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -106,8 +106,7 @@
     <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentAssertions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="FluentAssertions">
       <HintPath>..\..\packages\FluentAssertions.2.2.0.0\lib\net45\FluentAssertions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -127,20 +126,23 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="SettingTypesTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="EnumeratedTest.cs" />
-    <Compile Include="Reflection\ObjectExtensionsTest.cs" />
-    <Compile Include="Reflection\PropertyInfoExtensionsTest.cs" />
-    <Compile Include="Reflection\TestClasses.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Sources\PK.Common\PK.Common.csproj">
       <Project>{1428c867-5ccc-4ec7-b2d2-7f5c3c6016dc}</Project>
       <Name>PK.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Sources\PK.Settings\PK.Settings.csproj">
+      <Project>{80e775bb-cef4-4a78-976e-32bdbb8a8a8d}</Project>
+      <Name>PK.Settings</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
