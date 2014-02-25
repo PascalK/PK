@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PK.Common", "Sources\PK.Common\PK.Common.csproj", "{1428C867-5CCC-4EC7-B2D2-7F5C3C6016DC}"
 EndProject
@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		PK.CodeCoverage.runsettings = PK.CodeCoverage.runsettings
 		PK.snk = PK.snk
 		README.md = README.md
+		Release.cmd = Release.cmd
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{442626F8-E1B0-4CC3-A99E-E29F8BA46C26}"
@@ -23,11 +24,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{442626
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
+		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PK.Application", "Sources\PK.Application\PK.Application.csproj", "{5FA4DB2C-AEB1-451E-8DBE-5A2C6C901843}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PK.Application.Web", "Sources\PK.Application.Web\PK.Application.Web.csproj", "{0427EC7B-5CE9-4492-A5F8-0424973EC568}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PK.Application.Web.Net45", "Sources\PK.Application.Web.Net45\PK.Application.Web.Net45.csproj", "{0427EC7B-5CE9-4492-A5F8-0424973EC568}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PK.Settings", "Sources\PK.Settings\PK.Settings.csproj", "{80E775BB-CEF4-4A78-976E-32BDBB8A8A8D}"
 EndProject
@@ -39,17 +41,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PK.Application.Tests", "Tests\PK.Application.Tests\PK.Application.Tests.csproj", "{1F268818-FCF1-46B3-9A4A-9C0A6A138BE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PK.Application.Web.Tests", "Tests\PK.Application.Web.Tests\PK.Application.Web.Tests.csproj", "{D7A169A6-73F3-41BD-8104-AE2F795BF5D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PK.Application.Web.Net45.Tests", "Tests\PK.Application.Web.Net45.Tests\PK.Application.Web.Net45.Tests.csproj", "{D7A169A6-73F3-41BD-8104-AE2F795BF5D9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PK.Settings.StoreApps.Tests", "Tests\PK.Settings.StoreApps.Tests\PK.Settings.StoreApps.Tests.csproj", "{0BD725B1-6967-448D-898F-C9AB95A22F73}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PK.Settings.StoreApps", "Sources\PK.Settings.StoreApps\PK.Settings.StoreApps.csproj", "{9AF50EA2-F2F5-4595-AF4F-769E68AC9212}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PK.Settings.AppSettings", "Sources\PK.Settings.AppSettings\PK.Settings.AppSettings.csproj", "{2E75EC2A-A889-4451-9EB8-DB35E948BE0D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PK.Settings.AppSettings.Net45", "Sources\PK.Settings.AppSettings.Net45\PK.Settings.AppSettings.Net45.csproj", "{2E75EC2A-A889-4451-9EB8-DB35E948BE0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PK.Settings.AppSettings.Tests", "Tests\PK.Settings.AppSettings.Tests\PK.Settings.AppSettings.Tests.csproj", "{DEEC0CBE-72C1-419A-9251-3E7048906950}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PK.Settings.AppSettings.Net45.Tests", "Tests\PK.Settings.AppSettings.Net45.Tests\PK.Settings.AppSettings.Net45.Tests.csproj", "{DEEC0CBE-72C1-419A-9251-3E7048906950}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PK.Application.Web.Net40", "Sources\PK.Application.Web.Net40\PK.Application.Web.Net40.csproj", "{BEE9D648-3E02-4603-9F76-6146E1DF33F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PK.Settings.AppSettings.Net40", "Sources\PK.Settings.AppSettings.Net40\PK.Settings.AppSettings.Net40.csproj", "{1DA8BBF5-CB4F-4A03-971E-4C1B8D5A408F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{76C86B07-93AE-4336-80AE-4989FB151854}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PK.NuGet", "Sources\PK.NuGet\PK.NuGet.csproj", "{37FA2046-902A-4C56-8106-0C2D88C0042C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -213,6 +221,26 @@ Global
 		{BEE9D648-3E02-4603-9F76-6146E1DF33F0}.Release|ARM.ActiveCfg = Release|Any CPU
 		{BEE9D648-3E02-4603-9F76-6146E1DF33F0}.Release|x64.ActiveCfg = Release|Any CPU
 		{BEE9D648-3E02-4603-9F76-6146E1DF33F0}.Release|x86.ActiveCfg = Release|Any CPU
+		{1DA8BBF5-CB4F-4A03-971E-4C1B8D5A408F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DA8BBF5-CB4F-4A03-971E-4C1B8D5A408F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DA8BBF5-CB4F-4A03-971E-4C1B8D5A408F}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{1DA8BBF5-CB4F-4A03-971E-4C1B8D5A408F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1DA8BBF5-CB4F-4A03-971E-4C1B8D5A408F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1DA8BBF5-CB4F-4A03-971E-4C1B8D5A408F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DA8BBF5-CB4F-4A03-971E-4C1B8D5A408F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DA8BBF5-CB4F-4A03-971E-4C1B8D5A408F}.Release|ARM.ActiveCfg = Release|Any CPU
+		{1DA8BBF5-CB4F-4A03-971E-4C1B8D5A408F}.Release|x64.ActiveCfg = Release|Any CPU
+		{1DA8BBF5-CB4F-4A03-971E-4C1B8D5A408F}.Release|x86.ActiveCfg = Release|Any CPU
+		{37FA2046-902A-4C56-8106-0C2D88C0042C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37FA2046-902A-4C56-8106-0C2D88C0042C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37FA2046-902A-4C56-8106-0C2D88C0042C}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{37FA2046-902A-4C56-8106-0C2D88C0042C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{37FA2046-902A-4C56-8106-0C2D88C0042C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{37FA2046-902A-4C56-8106-0C2D88C0042C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37FA2046-902A-4C56-8106-0C2D88C0042C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37FA2046-902A-4C56-8106-0C2D88C0042C}.Release|ARM.ActiveCfg = Release|Any CPU
+		{37FA2046-902A-4C56-8106-0C2D88C0042C}.Release|x64.ActiveCfg = Release|Any CPU
+		{37FA2046-902A-4C56-8106-0C2D88C0042C}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -230,5 +258,7 @@ Global
 		{9AF50EA2-F2F5-4595-AF4F-769E68AC9212} = {4A0E3E06-D92D-4DB6-A8B1-FF7EAB93D9EB}
 		{2E75EC2A-A889-4451-9EB8-DB35E948BE0D} = {4A0E3E06-D92D-4DB6-A8B1-FF7EAB93D9EB}
 		{DEEC0CBE-72C1-419A-9251-3E7048906950} = {4A0E3E06-D92D-4DB6-A8B1-FF7EAB93D9EB}
+		{1DA8BBF5-CB4F-4A03-971E-4C1B8D5A408F} = {4A0E3E06-D92D-4DB6-A8B1-FF7EAB93D9EB}
+		{37FA2046-902A-4C56-8106-0C2D88C0042C} = {76C86B07-93AE-4336-80AE-4989FB151854}
 	EndGlobalSection
 EndGlobal

@@ -12,6 +12,21 @@ namespace PK.Common.Reflection
         [TestClass]
         public class TheGetCustomAttributeMethod
         {
+            [TestMethod, TestCategory("CodeContract")]
+            public void ShouldAssertElementParameterIsNotNull()
+            {
+                PropertyInfo actualProperty;
+                //Arrange
+                actualProperty = null;
+                //Act
+                Action action = () =>
+                    actualProperty.GetCustomAttribute<DummyTestAttribute>();
+                Action action2 = () =>
+                    actualProperty.GetCustomAttribute<DummyTestAttribute>(true);
+                //Assert
+                action.ShouldThrow<ArgumentNullException>();
+                action2.ShouldThrow<ArgumentNullException>();
+            }
             [TestMethod]
             public void ShouldReturnTheAttributeOfTheTypeSpecifiedOnTheProperty()//Not same instance = correct?
             {
@@ -42,40 +57,56 @@ namespace PK.Common.Reflection
                 //Assert
                 actualAttribute.ShouldBeEquivalentTo(expectedAttribute);
             }
-            [TestClass]
-            public class TheGetCustomAttributesMethod
+        }
+        [TestClass]
+        public class TheGetCustomAttributesMethod
+        {
+            [TestMethod, TestCategory("CodeContract")]
+            public void ShouldAssertElementParameterIsNotNull()
             {
-                [TestMethod]
-                public void ShouldReturnAllMatchingCustomAttributesSpecifiedOnTheProperty()
-                {
-                    PropertyInfo actualProperty;
-                    IEnumerable<DummyTestAttribute> actualAttributes;
-                    IEnumerable<DummyTestAttribute> expectedAttributes;
-
-                    //Arrange
-                    actualProperty = typeof(DummyTestClass).GetProperty("DummyPropertyWith2Attributes");
-                    expectedAttributes = System.Reflection.CustomAttributeExtensions.GetCustomAttributes<DummyTestAttribute>(actualProperty, false);
-                    //Act
-                    actualAttributes = actualProperty.GetCustomAttributes<DummyTestAttribute>();
-                    //Assert
-                    actualAttributes.ShouldBeEquivalentTo(expectedAttributes);
-                }
-                [TestMethod]
-                public void ShouldReturnAnEmptyEnumerableWhenCalledWithAnAbsentCustomAttributesOnTheProperty()
-                {
-                    PropertyInfo actualProperty;
-                    IEnumerable<SerializableAttribute> actualAttributes;
-                    IEnumerable<SerializableAttribute> expectedAttributes;
-
-                    //Arrange
-                    actualProperty = typeof(DummyTestClass).GetProperty("DummyPropertyWith2Attributes");
-                    expectedAttributes = System.Reflection.CustomAttributeExtensions.GetCustomAttributes<SerializableAttribute>(actualProperty, false);
-                    //Act
-                    actualAttributes = actualProperty.GetCustomAttributes<SerializableAttribute>();
-                    //Assert
-                    actualAttributes.ShouldBeEquivalentTo(expectedAttributes);
-                }
+                PropertyInfo actualProperty;
+                //Arrange
+                actualProperty = null;
+                //Act
+                Action action = () =>
+                    actualProperty.GetCustomAttributes<DummyTestAttribute>();
+                Action action2 = () =>
+                    actualProperty.GetCustomAttributes<DummyTestAttribute>(true);
+                //Assert
+                action.ShouldThrow<ArgumentNullException>();
+                action2.ShouldThrow<ArgumentNullException>();
             }
+            [TestMethod]
+            public void ShouldReturnAllMatchingCustomAttributesSpecifiedOnTheProperty()
+            {
+                PropertyInfo actualProperty;
+                IEnumerable<DummyTestAttribute> actualAttributes;
+                IEnumerable<DummyTestAttribute> expectedAttributes;
+
+                //Arrange
+                actualProperty = typeof(DummyTestClass).GetProperty("DummyPropertyWith2Attributes");
+                expectedAttributes = System.Reflection.CustomAttributeExtensions.GetCustomAttributes<DummyTestAttribute>(actualProperty, false);
+                //Act
+                actualAttributes = actualProperty.GetCustomAttributes<DummyTestAttribute>();
+                //Assert
+                actualAttributes.ShouldBeEquivalentTo(expectedAttributes);
+            }
+            [TestMethod]
+            public void ShouldReturnAnEmptyEnumerableWhenCalledWithAnAbsentCustomAttributesOnTheProperty()
+            {
+                PropertyInfo actualProperty;
+                IEnumerable<SerializableAttribute> actualAttributes;
+                IEnumerable<SerializableAttribute> expectedAttributes;
+
+                //Arrange
+                actualProperty = typeof(DummyTestClass).GetProperty("DummyPropertyWith2Attributes");
+                expectedAttributes = System.Reflection.CustomAttributeExtensions.GetCustomAttributes<SerializableAttribute>(actualProperty, false);
+                //Act
+                actualAttributes = actualProperty.GetCustomAttributes<SerializableAttribute>();
+                //Assert
+                actualAttributes.ShouldBeEquivalentTo(expectedAttributes);
+            }
+
         }
     }
 }

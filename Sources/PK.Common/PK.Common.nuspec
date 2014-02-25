@@ -1,16 +1,27 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
-    <version>$version$</version>
-    <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
+    <id>PK.Common</id>
+    <version>0.5.2</version>
+    <title>PK Common</title>
+    <authors>Pascal Klarenbeek</authors>
+    <owners>Pascal Klarenbeek</owners>
+    <summary></summary>
+    <description>Package containing general reusable functionality</description>
     <projectUrl>https://github.com/PascalK/PK</projectUrl>
+    <licenseUrl>https://github.com/PascalK/PK/blob/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
-    <releaseNotes>Initial package containing generic descriptor pattern base class (Enumerated)</releaseNotes>
-    <copyright>Copyright 2013</copyright>
-    <tags>PK Common Enumerated generic descriptor pattern</tags>
+    <releaseNotes>Added common reflection methods</releaseNotes>
+    <copyright>Copyright Pascal Klarenbeek 2013-2014</copyright>
+    <tags>PK Common Enumerated generic descriptor pattern reflection propertyinfo memberinfo custom attribute property name</tags>
+    <references>
+      <reference file="PK.Common.dll" />
+    </references>
   </metadata>
+  <files>
+    <file src="..\..\Package\PK.Common\lib\portable-net4+sl5+wp8+win8\PK.Common.dll" target="lib\portable-net4+sl5+wp8+win8" />
+    <file src="..\..\Package\PK.Common\lib\portable-net4+sl5+wp8+win8\PK.Common.pdb" target="lib\portable-net4+sl5+wp8+win8" />
+    <file src="..\..\Package\PK.Common\lib\portable-net4+sl5+wp8+win8\PK.Common.xml" target="lib\portable-net4+sl5+wp8+win8" />
+    <file src="..\..\Package\PK.Common\src\**" target="src" />
+  </files>
 </package>

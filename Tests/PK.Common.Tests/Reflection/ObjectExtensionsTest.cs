@@ -27,7 +27,7 @@ namespace PK.Common.Reflection
                 //Assert
                 actualResult.Should().SubjectProperties.Should().Equal(expectedProperty);
             }
-            [TestMethod]
+            [TestMethod, TestCategory("CodeContract")]
             public void ShouldThrowAnExceptionWhenCalledWithAFieldAsTheSelector()
             {
                 DummyTestClass testObject;
@@ -40,7 +40,7 @@ namespace PK.Common.Reflection
                     //Assert
                     .ShouldThrow<ArgumentException>();
             }
-            [TestMethod]
+            [TestMethod, TestCategory("CodeContract")]
             public void ShouldThrowAnExceptionWhenCalledWithAFunctionAsSelector()
             {
                 DummyTestClass testObject;
@@ -53,7 +53,7 @@ namespace PK.Common.Reflection
                     //Assert
                     .ShouldThrow<ArgumentException>();
             }
-            [TestMethod]
+            [TestMethod, TestCategory("CodeContract")]
             public void ShouldThrowAnExceptionWhenCalledWithoutASelector()
             {
                 DummyTestClass testObject;

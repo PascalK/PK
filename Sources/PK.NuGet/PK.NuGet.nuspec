@@ -1,0 +1,24 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>PK.NuGet</id>
+    <version>0.5.1</version>
+    <title>PK NuGet</title>
+    <authors>Pascal Klarenbeek</authors>
+    <owners>Pascal Klarenbeek</owners>
+    <summary></summary>
+    <description>Package containing target for making NuGet packages</description>
+    <projectUrl>https://github.com/PascalK/PK</projectUrl>
+    <licenseUrl>https://github.com/PascalK/PK/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <releaseNotes>Initial package</releaseNotes>
+    <copyright>Copyright Pascal Klarenbeek 2014</copyright>
+    <tags>PK NuGet package pack nuspec create</tags>
+    <dependencies>
+      <dependency id="NuGet.Build" version="2.8.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\..\Package\PK.NuGet\build\**" target="build" />
+  </files>
+</package>

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +19,9 @@ namespace PK.Settings.StoreApps
         public RoamingSettingsSettingManager()
             : this(ApplicationData.Current.RoamingSettings.Values)
         {
-            Contract.Requires<ArgumentNullException>(ApplicationData.Current != null, "ApplicationData.Current");
-            Contract.Requires<ArgumentNullException>(ApplicationData.Current.RoamingSettings != null, "ApplicationData.Current.RoamingSettings");
-            Contract.Requires<ArgumentNullException>(ApplicationData.Current.RoamingSettings.Values != null, "ApplicationData.Current.RoamingSettings.Values");
+            if (ApplicationData.Current == null) throw new ArgumentNullException("ApplicationData.Current");
+            if (ApplicationData.Current.RoamingSettings == null) throw new ArgumentNullException("ApplicationData.Current.RoamingSettings");
+            if (ApplicationData.Current.RoamingSettings.Values == null) throw new ArgumentNullException("ApplicationData.Current.RoamingSettings.Values");
         }
         /// <summary>
         /// Initializes a new instance of the RoamingSettingsSettingLoader class with a IPropertySet as a setting source
@@ -31,7 +30,7 @@ namespace PK.Settings.StoreApps
         public RoamingSettingsSettingManager(IPropertySet settingSource)
             : base(settingSource)
         {
-            Contract.Requires<ArgumentNullException>(settingSource != null, "settingSource");
+            if (settingSource == null) throw new ArgumentNullException("settingSource");
         }
     }
 }

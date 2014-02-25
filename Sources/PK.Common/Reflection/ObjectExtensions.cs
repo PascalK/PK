@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
 
 namespace PK.Common.Reflection
 {
@@ -23,8 +19,8 @@ namespace PK.Common.Reflection
         /// <returns></returns>
         public static PropertyInfo GetPropertyInfo<T, Tvalue>(this T @object, Expression<Func<T, Tvalue>> propertySelector)
         {
-            Contract.Requires<ArgumentNullException>(propertySelector != null, "propertySelector");
-            Contract.Requires<ArgumentException>(propertySelector.Body is MemberExpression, "propertySelector is not a member expression");
+            if (propertySelector == null) throw new ArgumentNullException("propertySelector");
+            if (!(propertySelector.Body is MemberExpression)) throw new ArgumentException("propertySelector is not a member expression");
 
             MemberExpression expression;
 

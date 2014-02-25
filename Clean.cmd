@@ -44,8 +44,8 @@ rd /s/q "%%d"
 )
 )
 
-echo Removing Lib folders from %Package%
-for /d /r %Package% %%d in (Lib) do (
+echo Removing folders from %Package%
+for /d /r %Package% %%d in (dir *.*) do (
 if exist "%%d" (
 echo Removing: %%d
 rd /s/q "%%d"

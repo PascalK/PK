@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Reflection;
-using System.Text;
+using System.Runtime.Serialization;
 
 namespace PK.Common
 {
@@ -13,6 +11,7 @@ namespace PK.Common
     /// </summary>
     /// <typeparam name="TEnumerated">The type that is enumerated</typeparam>
     /// <typeparam name="TValue">The value of the enumerated type</typeparam>
+    [DataContract]
     public abstract class Enumerated<TEnumerated, TValue> : IEnumerated<TEnumerated, TValue>
         where TEnumerated : class, IEnumerated<TEnumerated, TValue>
     {
@@ -22,6 +21,7 @@ namespace PK.Common
         /// <remarks>
         /// Usually this will be an identifier of the enumerated type
         /// </remarks>
+        [DataMember]
         public virtual TValue Value { get; private set; }
 
         /// <summary>
@@ -39,7 +39,6 @@ namespace PK.Common
         /// <returns>All defined enumerated items</returns>
         public static IEnumerable<TEnumerated> GetAll()
         {
-            Contract.Ensures(Contract.Result<IEnumerable<TEnumerated>>() != null);
             //TODO: Performance
             foreach (FieldInfo field in typeof(TEnumerated).GetFields(BindingFlags.Public | BindingFlags.Static))
             {
@@ -57,8 +56,6 @@ namespace PK.Common
         /// <exception cref="InvalidOperationException">If no enumerated item with the specified value exists</exception>
         public static TEnumerated Get(TValue value)
         {
-            Contract.Ensures(Contract.Result<TEnumerated>() != null);
-
             TEnumerated foundValue;
 
             foundValue = GetOrDefault(value);
@@ -69,8 +66,8 @@ namespace PK.Common
             else
             {
                 throw new InvalidOperationException(
-                    string.Format("No '{0}' found with value '{1}'", 
-                        typeof(TEnumerated).Name, 
+                    string.Format("No '{0}' found with value '{1}'",
+                        typeof(TEnumerated).Name,
                         value != null ? value.ToString() : "NULL"));
             }
         }

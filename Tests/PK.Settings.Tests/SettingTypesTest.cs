@@ -9,6 +9,26 @@ namespace PK.Settings.Tests
     [TestClass]
     public class SettingTypesTest
     {
+        [TestMethod, TestCategory("CodeContract")]
+        public void ShouldThrowAnExceptionWhenConstructedWithoutAParseToFunction()
+        {
+            //Arrange
+            //Act
+            Action action = () =>
+                new SettingType<object>(null, o => o.ToString());
+            //Assert
+            action.ShouldThrow<ArgumentNullException>();
+        }
+        [TestMethod, TestCategory("CodeContract")]
+        public void ShouldThrowAnExceptionWhenConstructedWithoutAParseFromFunction()
+        {
+            //Arrange
+            //Act
+            Action action = () =>
+                new SettingType<object>(s => s, null);
+            //Assert
+            action.ShouldThrow<ArgumentNullException>();
+        }
         [TestClass]
         public class TheGetFunction
         {
@@ -29,7 +49,6 @@ namespace PK.Settings.Tests
         [TestClass]
         public class TheParseFunction
         {
-
             [TestMethod]
             public void ShouldReturnInitialValueWhenParsedAndUnparsed()
             {

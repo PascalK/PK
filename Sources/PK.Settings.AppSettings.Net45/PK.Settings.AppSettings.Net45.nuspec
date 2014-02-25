@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>PK.Settings.AppSettings</id>
+    <version>0.5.2</version>
+    <title>PK Settings AppSettings</title>
+    <authors>Pascal Klarenbeek</authors>
+    <owners>Pascal Klarenbeek</owners>
+    <summary>
+    </summary>
+    <description>Implementation of PK.Settings for accessing settings from the application configuration file (Web.config or App.confing)</description>
+    <projectUrl>https://github.com/PascalK/PK</projectUrl>
+    <licenseUrl>https://github.com/PascalK/PK/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <releaseNotes>Initial package containing an implementation for accessing settings from the application configuration file</releaseNotes>
+    <copyright>Copyright Pascal Klarenbeek 2013-2014</copyright>
+    <tags>PK Settings configuration settingloader web.config app.config AppSettings</tags>
+    <dependencies>
+      <dependency id="PK.Settings" version="0.5.1" />
+    </dependencies>
+    <references>
+      <reference file="PK.Settings.AppSettings.dll" />
+    </references>
+  </metadata>
+  <files>
+    <file src="..\..\Package\PK.Settings.AppSettings\lib\net45\PK.Settings.AppSettings.dll" target="lib\net45" />
+    <file src="..\..\Package\PK.Settings.AppSettings\lib\net45\PK.Settings.AppSettings.pdb" target="lib\net45" />
+    <file src="..\..\Package\PK.Settings.AppSettings\lib\net45\PK.Settings.AppSettings.xml" target="lib\net45" />
+    <file src="..\..\Package\PK.Settings.AppSettings\lib\net45\CodeContracts\*" target="lib\net45\CodeContracts" />
+    <file src="..\..\Package\PK.Settings.AppSettings\lib\net40\PK.Settings.AppSettings.dll" target="lib\net40" />
+    <file src="..\..\Package\PK.Settings.AppSettings\lib\net40\PK.Settings.AppSettings.pdb" target="lib\net40" />
+    <file src="..\..\Package\PK.Settings.AppSettings\lib\net40\PK.Settings.AppSettings.xml" target="lib\net40" />
+    <file src="..\..\Package\PK.Settings.AppSettings\lib\net40\CodeContracts\*" target="lib\net40\CodeContracts" />
+    <file src="..\..\Package\PK.Settings.AppSettings\src\**" target="src" />
+  </files>
+</package>

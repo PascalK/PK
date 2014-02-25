@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PackagesFolder Condition="'$(PackRootDir)' == '' AND ('$(SolutionDir)' != '' AND '$(SolutionDir)' != '*Undefined*')">$(SolutionDir)packages\</PackagesFolder>
+    <PackagesFolder Condition="'$(PackRootDir)' == '' AND ('$(SolutionDir)' == '' OR '$(SolutionDir)' == '*Undefined*')">$(MSBuildProjectDirectory)\..\..\packages\</PackagesFolder>
+  </PropertyGroup>
+  <Import Project="$(PackagesFolder)NuGet.Build.*\tools\NuGet.targets" />
+  <PropertyGroup>
+    <PackRootDir Condition="'$(PackRootDir)' == '' AND ('$(SolutionDir)' != '' AND '$(SolutionDir)' != '*Undefined*')">$(SolutionDir)Package\</PackRootDir>
+    <PackRootDir Condition="'$(PackRootDir)' == '' AND ('$(SolutionDir)' == '' OR '$(SolutionDir)' == '*Undefined*')">$(MSBuildProjectDirectory)\..\..\Package\</PackRootDir>
+    <PackProjectDir Condition="'$(PackProjectDir)'==''">$(PackRootDir)$(MSBuildProjectName)\</PackProjectDir>
+    <PackProjectSourceDir Condition="'$(PackSourceDirectory)' == ''">$(PackProjectDir)src\</PackProjectSourceDir>
+    <PackSymbols Condition="'$(PackSymbols)' == ''">true</PackSymbols>
+    <PackCommand Condition="Exists('$(MSBuildProjectDirectory)\$(MSBuildProjectName).nuspec')">$(NuGetExePath) pack $(MSBuildProjectDirectory)\$(MSBuildProjectName).nuspec $(NonInteractiveSwitch) -OutputDirectory $(PackRootDir)</PackCommand>
+    <PackCommand Condition="!Exists('$(MSBuildProjectDirectory)\$(MSBuildProjectName).nuspec')">$(NuGetExePath) pack $(MSBuildProjectFullPath) $(NonInteractiveSwitch) -OutputDirectory $(PackRootDir)</PackCommand>
+    <PackCommand Condition="$(PackSymbols)">$(PackCommand) -symbols</PackCommand>
+  </PropertyGroup>
+  <Target Name="Pack" DependsOnTargets="AddDependantProjectReferences;Rebuild;PackSources;CheckPrerequisites" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Exec Command="$(PackCommand)" />
+  </Target>
+  <Target Name="PackSources">
+    <ItemGroup>
+      <NuGetSources Include="@(Compile)" Exclude="$(TargetFrameworkMonikerAssemblyAttributesPath)" />
+    </ItemGroup>
+    <Copy SourceFiles="@(NuGetSources)" DestinationFiles="@(NuGetSources->'$(PackProjectSourceDir)%(Identity)')" />
+  </Target>
+  <PropertyGroup>
+    <AddDependantProjectReferencesDependsOn>
+      $(AddDependantProjectReferencesDependsOn)
+    </AddDependantProjectReferencesDependsOn>
+  </PropertyGroup>
+  <Target Name="AddDependantProjectReferences" DependsOnTargets="$(AddDependantProjectReferencesDependsOn)">
+    <ItemGroup Condition="'@(PackDependantProjects)' != ''">
+      <ProjectReference Include="@(PackDependantProjects)">
+        <Name>%(PackDependantProjects.Filename)</Name>
+      </ProjectReference>
+    </ItemGroup>
+  </Target>
+</Project>

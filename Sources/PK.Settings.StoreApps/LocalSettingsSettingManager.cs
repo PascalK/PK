@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +19,9 @@ namespace PK.Settings.StoreApps
         public LocalSettingsSettingManager()
             : this(ApplicationData.Current.LocalSettings.Values) 
         {
-            Contract.Requires<ArgumentNullException>(ApplicationData.Current != null, "ApplicationData.Current");
-            Contract.Requires<ArgumentNullException>(ApplicationData.Current.LocalSettings != null, "ApplicationData.Current.LocalSettings");
-            Contract.Requires<ArgumentNullException>(ApplicationData.Current.LocalSettings.Values != null, "ApplicationData.Current.LocalSettings.Values");
+            if (ApplicationData.Current == null) throw new ArgumentNullException("ApplicationData.Current");
+            if (ApplicationData.Current.LocalSettings == null) throw new ArgumentNullException("ApplicationData.Current.LocalSettings");
+            if (ApplicationData.Current.LocalSettings.Values == null) throw new ArgumentNullException("ApplicationData.Current.LocalSettings.Values");
         }
         /// <summary>
         /// Initializes a new instance of the RoamingSettingsSettingLoader class with a IPropertySet as a setting source
@@ -31,7 +30,7 @@ namespace PK.Settings.StoreApps
         public LocalSettingsSettingManager(IPropertySet settingSource)
             : base(settingSource)
         {
-            Contract.Requires<ArgumentNullException>(settingSource != null, "settingSource");
+            if (settingSource == null) throw new ArgumentNullException("settingSource");
         }
     }
 }

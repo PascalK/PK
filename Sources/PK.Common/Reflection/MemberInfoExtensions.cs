@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
 
 namespace PK.Common.Reflection
 {
@@ -25,7 +22,7 @@ namespace PK.Common.Reflection
         public static TAttribute GetCustomAttribute<TAttribute>(this MemberInfo element, bool inherit)
             where TAttribute : Attribute
         {
-            Contract.Requires<ArgumentNullException>(element != null, "element");
+            if (element == null) throw new ArgumentNullException("element");
 
             return element.GetCustomAttributes<TAttribute>(inherit).SingleOrDefault();
         }
@@ -39,7 +36,7 @@ namespace PK.Common.Reflection
         public static TAttribute GetCustomAttribute<TAttribute>(this MemberInfo element) 
             where TAttribute : Attribute
         {
-            Contract.Requires<ArgumentNullException>(element != null, "element");
+            if (element == null) throw new ArgumentNullException("element");
 
             return element.GetCustomAttribute<TAttribute>(false);
         }
@@ -54,7 +51,7 @@ namespace PK.Common.Reflection
         public static IEnumerable<TAttribute> GetCustomAttributes<TAttribute>(this MemberInfo element, bool inherit)
             where TAttribute : Attribute
         {
-            Contract.Requires<ArgumentNullException>(element != null, "element");
+            if (element == null) throw new ArgumentNullException("element");
 
             return element.GetCustomAttributes(inherit).OfType<TAttribute>().ToArray();
         }
@@ -68,7 +65,7 @@ namespace PK.Common.Reflection
         public static IEnumerable<TAttribute> GetCustomAttributes<TAttribute>(this MemberInfo element) 
             where TAttribute : Attribute
         {
-            Contract.Requires<ArgumentNullException>(element != null, "element");
+            if (element == null) throw new ArgumentNullException("element");
 
             return element.GetCustomAttributes<TAttribute>(false);
         }
