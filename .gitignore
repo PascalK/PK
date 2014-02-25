@@ -9,6 +9,7 @@ Backups/
 TestBackup/
 csx/
 packages/
+Package/
 BuildOutput/
 
 # Known files to ignore always #
