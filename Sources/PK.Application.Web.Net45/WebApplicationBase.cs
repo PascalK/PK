@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,8 @@ namespace PK.Application.Web
         /// <returns></returns>
         protected virtual TApplication InitializeApplication()
         {
+            Contract.Ensures(Contract.Result<TApplication>() != null);
+
             return new TApplication();
         }
         /// <summary>

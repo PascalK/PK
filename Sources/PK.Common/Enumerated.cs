@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
@@ -39,6 +40,7 @@ namespace PK.Common
         /// <returns>All defined enumerated items</returns>
         public static IEnumerable<TEnumerated> GetAll()
         {
+            Contract.Ensures(Contract.Result<IEnumerable<TEnumerated>>() != null);
             //TODO: Performance
             foreach (FieldInfo field in typeof(TEnumerated).GetFields(BindingFlags.Public | BindingFlags.Static))
             {
@@ -56,6 +58,8 @@ namespace PK.Common
         /// <exception cref="InvalidOperationException">If no enumerated item with the specified value exists</exception>
         public static TEnumerated Get(TValue value)
         {
+            Contract.Ensures(Contract.Result<TEnumerated>() != null);
+
             TEnumerated foundValue;
 
             foundValue = GetOrDefault(value);

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Diagnostics.Contracts;
 
 namespace PK.Settings
 {
@@ -19,17 +17,28 @@ namespace PK.Settings
         /// The <see cref="SettingType{TSettingValue}"/> for the setting 
         /// </summary>
         public SettingType<TSettingValue> Type { get; set; }
+        private TSettingValue value;
         /// <summary>
         /// The value of the setting
         /// </summary>
-        public TSettingValue Value { get; set; }
+        public TSettingValue Value
+        {
+            get
+            {
+                return value;
+            }
+            set
+            {
+                this.value = value;
+            }
+        }
         /// <summary>
         /// Initializes a new instance of the Setting class with the key
         /// </summary>
         /// <param name="key">The key which identifies the setting</param>
         public Setting(string key)
         {
-            if (key == null) throw new ArgumentNullException("key");
+            Contract.Requires<ArgumentNullException>(key != null, "key");
 
             Key = key;
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using PK.Common;
+using System.Diagnostics.Contracts;
 using System.Globalization;
 
 namespace PK.Settings
@@ -43,8 +44,8 @@ namespace PK.Settings
             Func<TSettingValue, string> parseFromFunction)
             : base(typeof(TSettingValue))
         {
-            if (parseToFunction == null) throw new ArgumentNullException("parseToFunction");
-            if (parseFromFunction == null) throw new ArgumentNullException("parseFromFunction");
+            Contract.Requires<ArgumentNullException>(parseToFunction != null, "parseToFunction");
+            Contract.Requires<ArgumentNullException>(parseFromFunction != null, "parseFromFunction");
 
             parseTo = parseToFunction;
             parseFrom = parseFromFunction;
@@ -56,6 +57,8 @@ namespace PK.Settings
         /// <returns>The SettingType instance for TSettingValue</returns>
         public static SettingType<TSettingValue> Get()
         {
+            Contract.Ensures(Contract.Result<SettingType<TSettingValue>>() != null);
+
             return Get(typeof(TSettingValue));
         }
 
@@ -117,5 +120,12 @@ namespace PK.Settings
         public static SettingType<int?> IntNullable = new SettingTypeNullable<int>(
             Int.ParseTo,
             Int.ParseFrom);
+
+        [ContractInvariantMethod]
+        private void ContractInvariants()
+        {
+            Contract.Invariant(parseTo != null);
+            Contract.Invariant(parseFrom != null);
+        }
     }
 }

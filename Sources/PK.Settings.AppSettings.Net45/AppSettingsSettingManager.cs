@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PK.Settings;
+using System.Diagnostics.Contracts;
 
 namespace PK.Settings.AppSettings
 {
@@ -21,8 +22,6 @@ namespace PK.Settings.AppSettings
         /// <returns>The setting with the requested key</returns>
         public ISetting<TSettingValue> Get<TSettingValue>(string key)
         {
-            if (key == null) throw new ArgumentNullException("key");
-
             ISetting<TSettingValue> setting;
             SettingType<TSettingValue> settingType;
 
@@ -50,8 +49,6 @@ namespace PK.Settings.AppSettings
         /// <param name="value">The value of the setting</param>
         public void Set<TSettingValue>(string key, TSettingValue value)
         {
-            if (key == null) throw new ArgumentNullException("key");
-
             SettingType<TSettingValue> settingType;
 
             settingType = SettingType<TSettingValue>.Get();
@@ -64,8 +61,6 @@ namespace PK.Settings.AppSettings
         /// <param name="setting">The setting which will be changed</param>
         public void Set<TSettingValue>(ISetting<TSettingValue> setting)
         {
-            if (setting == null) throw new ArgumentNullException("setting");
-
             Set(setting.Key, setting.Value);
         }
     }
